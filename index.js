@@ -1,4 +1,5 @@
 const express = require("express");
+const req = require("express/lib/request");
 const mongoose = require("mongoose");
 const app = express();
 
@@ -33,5 +34,8 @@ const Potion = mongoose.model("Potion", potionSchema, "Potions")
 // Create a dynamic route handler that updates a specific potion's color based on its label [2 pts]
 // e.g. /update/polyjuice will update the color of the polyjuice potion to pearly white
 // e.g. /update/amortentia will update the color of the Amortentia potion to golden purple
-
+app.get("/update/:polyjuice", async(req,res)=>{
+ const potions = await potions.updateOne({}) 
+ res.json(potions)
+})
 
